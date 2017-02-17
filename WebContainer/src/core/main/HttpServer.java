@@ -29,9 +29,9 @@ public class HttpServer implements IHttpServer{
 	@Override
 	public void await() {
 		ServerSocket serversocket = null;
-		int port = 8080;
+		int port = 8082;
 		try{
-			serversocket = new ServerSocket(port,1,InetAddress.getLocalHost());
+			serversocket = new ServerSocket(port,1,InetAddress.getByName("127.0.0.1"));
 		}catch(IOException e){
 			System.out.println("ServerSocket build error"+"\n");
 			e.printStackTrace();
@@ -44,6 +44,7 @@ public class HttpServer implements IHttpServer{
 			OutputStream os = null;
 			try {
 				socket = serversocket.accept();
+				System.out.println("welcome");
 				is = socket.getInputStream();
 				os = socket.getOutputStream();
 				
@@ -54,10 +55,14 @@ public class HttpServer implements IHttpServer{
 				Response response = new Response(os);
 				response.serRequest(request);
 				
-				if(request.getUri().startsWith("/servlet")){
+				String uri=request.getUri();
+				System.out.println("uri:"+uri);
+				if(uri.startsWith("/servlet")){
+					System.out.println("进入Servlet");
 					Processor processor = new ServletProcessor1();
 					processor.process(request, response);
 				}else{
+					System.out.println("进入静态");
 					Processor processor = new StaticResourceProcessor();
 					processor.process(request, response);
 				}
