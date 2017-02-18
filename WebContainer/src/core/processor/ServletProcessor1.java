@@ -15,8 +15,6 @@ public class ServletProcessor1 implements Processor{
 	@Override
 	public void process(Request request, Response response) {
 		String uri = request.getUri();
-		System.out.println(uri);
-		System.out.println(uri.lastIndexOf('/')+1);
 		String ser = uri.substring(uri.lastIndexOf('/')+1);
 		System.out.println(ser);
 		try {

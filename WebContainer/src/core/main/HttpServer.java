@@ -14,6 +14,7 @@ import core.request.Request;
 import core.response.Response;
 
 /*
+ * 已废弃，被Bootstrap/HttpConnector/HttpProcessor代替
  * 服务器入口 单循环
  */
 public class HttpServer implements IHttpServer{

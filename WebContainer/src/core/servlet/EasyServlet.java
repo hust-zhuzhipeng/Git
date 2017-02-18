@@ -23,8 +23,8 @@ public class EasyServlet implements Servlet {
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		System.out.println("EasyServlet service");
 		PrintWriter out=res.getWriter();
-		out.println("Hello!");
-		out.print("form EasyServlet~");
+		out.println("Hello! form EasyServlet~");
+		out.flush();
 	}
 	
 	@Override

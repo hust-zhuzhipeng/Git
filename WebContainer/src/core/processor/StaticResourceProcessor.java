@@ -1,6 +1,7 @@
 package core.processor;
 
 import java.io.IOException;
+import java.net.Socket;
 
 import core.request.Request;
 import core.response.Response;
@@ -16,5 +17,7 @@ public class StaticResourceProcessor implements Processor{
 			e.printStackTrace();
 		}
 	}
+
+	
 	
 }
